@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+     <!-- boostrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <!-- DataTable -->
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    <title>Administrar Clientes</title>
+</head>
+<body>
+    <nav> 
+        <div>
+            <div>
+                <i id="btn-open" class="fas fa-bars user"></i>
+            </div>
+            <header>
+                <a href="/InicioAdmin">
+                    <img src="img/logo.png" alt="Img logo">
+                </a>
+            </header>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <h2>Mi cuenta</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-bell"></i>
+                        <h2>Notificaciones</h2>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="logout()" href="#">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <h2>Cerrar Sesión</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <h2>Ayuda</h2>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="pull-down" id="pull-down">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <h2>Mi cuenta</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-bell"></i>
+                    <h2>Notificaciones</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de usuarios</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de productos</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de categorias</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de empresa</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de asesorias</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de intercambios</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de compras</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Reportes</h2>
+                </a>
+            </li>
+            <li>
+                <a onclick="logout()" href="#">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <h2>Cerrar Sesión</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <h2>Ayuda</h2>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content-all">
+        <div class="main-left">
+            <a href="/listarUsuario">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de usuarios</p>
+            </a>
+            <a href="/listarProducto">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de productos</p>
+            </a>
+            <a href="/listarCategoria">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de categorias</p>
+            </a>
+            <a href="/listarEmpresa">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de empresa</p>
+            </a>
+            <!-- <a href="#">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de compras</p>
+            </a> -->
+            <a href="/r">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Reportes</p>
+            </a>
+        </div>
+        <div class="conainer my-1 mx-1">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <table id="tabla_content" class= "table display nowrap mt-2 table-bordered table-striped" style="width: 100%;">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Identificacion</th>
+                            <th>Nombre</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+
+                    <tbody id="tabla"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- DataTable -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <!-- botones -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <!-- fuentes -->
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <!-- aun no se  -->
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+
+    <script src="/js/sweetalert2.all.min.js"></script>
+    <script src="/js/reportes.js"></script>
+    <script src="/js/scrip.js"></script>
+</body> 
+</html>

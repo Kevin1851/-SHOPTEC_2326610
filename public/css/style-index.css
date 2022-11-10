@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ebebeb;
+}
+
+body nav {
+    width: 100%;
+    height: 70px;
+    background: rgb(0,91,173);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-right: 1px solid rgba(51, 51, 51, 0.103);
+}
+
+body nav div {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+body nav div div {
+    align-items: center;
+    margin: 0;
+    width: auto;
+    display: none;
+}
+
+body nav div div i.fas {
+    font-size: 2em;
+    color: #fff;
+}
+
+nav div header a {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 100%;
+}
+
+nav div header a img {
+    border-radius: 50%;
+    height: 50px;
+    margin: auto;
+}
+
+nav div ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav div ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+nav div ul li a:hover {
+    color: #eeeeee;
+    transition: color 3ms;
+}
+
+nav div ul li a i {
+    margin-right: 5px;
+}
+
+nav div ul li a h2 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+body .pull-down {
+    left: -80%;
+    top: 70px;
+    position: fixed;
+    width: 80%;
+    height: 100%;
+    padding: 15px 25px;
+    background-color: rgb(0,91,173);
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+body .pull-down ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body .pull-down ul li a {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    color: #fff;
+    padding: 5px 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+body .pull-down ul li a i {
+    margin-right: 12px;
+    font-size: 18px;
+    width: 16px;
+}
+
+body .pull-down ul li a h2 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+body .content-all {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+body .content-all .module-content {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    flex-direction: column;
+}
+
+body .content-all .module-content h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #666;
+    margin: 6px 0;
+}
+
+body .content-all .module-content .content-grid {
+    display: grid;
+    grid: auto auto / 1fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.content-all .module-content div a {
+    width: auto;
+    height: 220px;
+    background-color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+}
+
+.content-all .module-content div a:hover {
+    -webkit-box-shadow: 0 7px 16px 0 rgb(0 0 0 / 20%), 0 1px 3px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 7px 16px 0 rgb(0 0 0 / 20%), 0 1px 3px 0 rgb(0 0 0 / 10%);
+    -webkit-transition: -webkit-box-shadow .1s ease-out;
+    transition: -webkit-box-shadow .1s ease-out;
+    transition: box-shadow .1s ease-out;
+    transition: box-shadow .1s ease-out,-webkit-box-shadow .1s ease-out;
+}
+
+.module-content a div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 120px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.103);
+}
+
+.module-content a div img {
+    height: 70px;
+}
+
+.module-content a p {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    margin-top: 15px;
+    color: rgb(58, 58, 58);
+}
+
+@media screen and (max-width: 1200px) {
+    body nav div {
+        margin: auto 25px;
+    }
+
+    .content-all .module-content .tittle {
+        margin-left: 25px;
+    }
+
+    body .content-all .module-content .content-grid {
+        margin: 20px 25px auto 25px;
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 850px){
+    body .content-all .module-content .content-grid {
+        grid: auto auto / 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 690px){
+
+    body nav div ul {
+        display: none;
+    }
+
+    body nav {
+        position: fixed;
+    }
+
+    body nav div div {
+        display: flex;
+    }
+
+    body nav div div i.fas {
+        display: flex;
+    }
+
+    body .barra-dezplegada {
+        left: 0;
+        top: 70px;
+        position: fixed;
+        width: 80%;
+        height: 100%;
+        padding: 15px 25px;
+        background-color: rgb(0,91,173);
+        transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+
+    body .barra-dezplegada ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    body .barra-dezplegada ul li a {
+        display: flex;
+        height: 60px;
+        color: #fff;
+        align-items: center;
+        padding: 5px 0;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    body .barra-dezplegada ul li a i {
+        margin-right: 12px;
+        font-size: 18px;
+        width: 16px;
+    }
+    
+    body .barra-dezplegada ul li a h2 {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    body .content-all .module-content .content-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    body .content-all .module-content {
+        font-size: 0.9em;
+    }
+
+    .content-all .module-content div a {
+        display: flex;
+        align-items: center;
+        height: 80px;
+        width: 100%;
+    }
+
+    .module-content a div {
+        border-bottom: none;
+        height: auto;
+    }
+    
+    .module-content a div img {
+        height: 50px;
+    }
+
+    .module-content a p {
+        margin: 0 20px;
+    }
+}

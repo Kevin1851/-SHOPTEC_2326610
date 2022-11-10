@@ -1,0 +1,39 @@
+<nav id="navigation">
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
+                <li id="home"><a href="/Home">Home</a></li>
+                <li id="store"><a href="./store">Portatiles</a></li>
+                <li id="telefono"><a href="./telefono">Telefonos</a></li>
+                <li id="camara"><a href="./camara">Camaras</a></li>
+                <li id="accesorio"><a href="./accesorio">Accessorios</a></li>
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
+</nav>
+<script>
+    let url = window.location.href;
+    let page = url.split('/Home').pop();
+
+    let homePage = document.getElementById('home');
+    let storePage = document.getElementById('store');
+    let telefonoPage = document.getElementById('telefono');
+    let camaraPage = document.getElementById('camara');
+    let accesorioPage = document.getElementById('accesorio');
+
+    switch (page) {
+        case 'store': storePage.setAttribute('class', 'active'); break;
+        case 'telefono': telefonoPage.setAttribute('class', 'active'); break;
+        case 'camara': camaraPage.setAttribute('class', 'active'); break;
+        case 'accesorio': accesorioPage.setAttribute('class', 'active'); break;
+    
+        default: homePage.setAttribute('class', 'active'); break;
+    }
+
+</script>

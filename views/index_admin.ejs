@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style-index.css">
+    <title>Home</title>
+    
+</head>
+<body>
+    <nav> 
+        <div>
+            <div>
+                <i id="btn-open" class="fas fa-bars user"></i>
+            </div>
+            <header>
+                <a href="/InicioAdmin">
+                    <img src="img/logo.png" alt="Img logo">
+                </a>
+            </header>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <h2>Mi cuenta</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-bell"></i>
+                        <h2>Notificaciones</h2>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="logout()" href="#">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <h2>Cerrar Sesión</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <h2>Ayuda</h2>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pull-down" id="pull-down">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <h2>Mi cuenta</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-bell"></i>
+                    <h2>Notificaciones</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <h2>Cerrar Sesión</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <h2>Ayuda</h2>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-all">
+        <div class="module-content">
+            <h1 class="tittle">Administrador de módulos</h1>
+            <div class="content-grid">
+                <a href="/listarUsuario">
+                    <div>
+                        <img src="img/settings_icon.png" alt="">
+                    </div>
+                    <p>Administrador de usuarios</p>
+                </a>
+                <a href="/listarProducto">
+                    <div>
+                        <img src="img/settings_icon.png" alt="">
+                    </div>
+                    <p>Administrador de productos</p>
+                </a>
+                <a href="/listarCategoria">
+                    <div>
+                        <img src="img/settings_icon.png" alt="">
+                    </div>
+                    <p>Administrador de categorias</p>
+                </a>
+                <a href="/listarEmpresa">
+                    <div>
+                        <img src="img/settings_icon.png" alt="">
+                    </div>
+                    <p>Administrador de empresa</p>
+                </a>
+                
+                <a href="/r">
+                    <div>
+                        <img src="img/settings_icon.png" alt="">
+                    </div>
+                    <p>Reportes</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="js/scrip.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <title>Administrar Asesoria</title>
+</head>
+<body>
+  <nav> 
+      <div>
+          <div>
+              <i id="btn-open" class="fas fa-bars user"></i>
+          </div>
+          <header>
+              <a href="/InicioAdmin">
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="Img logo sena">
+              </a>
+          </header>
+          <ul>
+              <li>
+                  <a href="#">
+                      <i class="fa-solid fa-user"></i>
+                      <h2>Mi cuenta</h2>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa-solid fa-bell"></i>
+                      <h2>Notificaciones</h2>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                      <h2>Cerrar Sesión</h2>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <i class="fa-solid fa-circle-question"></i>
+                      <h2>Ayuda</h2>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <div class="pull-down" id="pull-down">
+      <ul>
+          <li>
+              <a href="#">
+                  <i class="fa-solid fa-user"></i>
+                  <h2>Mi cuenta</h2>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <i class="fa-solid fa-bell"></i>
+                  <h2>Notificaciones</h2>
+              </a>
+          </li>
+          <li>
+              <a href="/listarUsuario">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de usuarios</h2>
+              </a>
+          </li>
+          <li>
+              <a href="/listarProducto">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de productos</h2>
+              </a>
+          </li>
+          <li>
+              <a href="/listarCategoria">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de categorias</h2>
+              </a>
+          </li>
+          <li>
+                <a href="/listarEmpresa">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de empresa</h2>
+              </a>
+          </li>
+          <li>
+              <a href="/listarAsesoria">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de asesorias</h2>
+              </a>
+          </li>
+          <!-- <li>
+              <a href="#">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de intercambios</h2>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <i class="fa-solid fa-users"></i>
+                  <h2>Administrador de compras</h2>
+              </a>
+          </li> -->
+          <li>
+              <a href="#">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <h2>Cerrar Sesión</h2>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <h2>Ayuda</h2>
+              </a>
+          </li>
+      </ul>
+  </div>
+  <div class="content-all">
+      <div class="main-left">
+          <a href="/listarUsuario">
+              <div>
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="">
+              </div>
+              <p>Administrador de usuarios</p>
+          </a>
+          <a href="/listarProducto">
+              <div>
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="">
+              </div>
+              <p>Administrador de productos</p>
+          </a>
+          <a href="/listarCategoria">
+              <div>
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="">
+              </div>
+              <p>Administrador de categorias</p>
+          </a>
+          <a href="/listarEmpresa">
+              <div>
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="">
+              </div>
+              <p>Administrador de empresa</p>
+          </a>
+          <a href="/listarAsesoria">
+              <div>
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="">
+              </div>
+              <p>Administrador de asesorias</p>
+          </a>
+          <!-- <a href="#">
+              <div>
+                  <img src="img/logo-sena-Naranja-300x300-1.jpg" alt="">
+              </div>
+              <p>Administrador de compras</p>
+          </a> -->
+      </div>
+      
+      <div class="container_crud">
+        <button type="button" onclick="Abrir_Modal()" class="btn btn-primary m-3">Nuevo</button>
+        <div class="container">
+            <table class= "table mt-2 table-bordered table-striped">
+                <thead>
+                    <tr class="text-center">
+                    <th>Nº</th>
+                    <th>Fecha</th>
+                    <th>Tema</th>
+                    <th>Duracion</th>
+                    <th>Calificacion</th>
+                    <th>IdAsesor</th>
+                    <th>IdCliente</th>
+                    <th>CorreoCliente</th>
+                    <th>NombreCliente</th>
+                    <th>Acciones</th>
+                    </tr>
+                </thead>
+    
+                <tbody id="tabla"></tbody>
+            </table>
+        </div>
+        <div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Registrar Asesoria</h5>  
+                  <button id="salir" type="button" class="btn-close" data-bs-dismiss="modal" style="display: block;" aria-label="Close" ></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p ><b>Todos los campos son obligatorios</b></p>
+                        <div class="mb-3">
+                           <input type="hidden" class="form-control" id="id">
+                       </div> 
+                           <div class="mb-3">
+                               <label for="recipient-name" class="col-form-label" >Fecha</label>
+                               <input type="date" class="form-control" id="fecha" >
+                             </div>
+                           <div class="mb-3">
+                               <label for="recipient-name" class="col-form-label">Tema</label>
+                               <input type="text" class="form-control" id="tema">
+                           </div>
+                           <div class="mb-3">
+                             <label for="recipient-name" class="col-form-label">Duracion</label>
+                             <input type="time" class="form-control" id="duracion">
+                         </div>
+                           <div class="mb-3">
+                               <label for="recipient-name" class="col-form-label">Calificacion</label>
+                                    <select class="form-select" name="calificacion" id="calificacion" required>
+                                    <option selected disabled value="">Calificacion</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    </select>
+                           </div>
+                           <div class="mb-3">
+                               <label for="recipient-name" class="col-form-label">Nombre del asesor</label>
+                               <select class="form-select" name="IdAsesor" id="idAsesor" required>
+                               <option selected disabled value="">Seleccione</option>
+                               <option value="14">Juan Yuco</option>
+                               <option value="12">felipe</option>
+                               </select>
+                           </div>
+                           <div class="mb-3">
+                               <label for="recipient-name" class="col-form-label"> Identificacion</label>
+                               <input type="number" class="form-control" id="idcliente" minlength="10" maxlength="10">
+                           </div>
+                           <div class="mb-3">
+                               <label for="recipient-name" class="col-form-label">CorreoCliente</label>
+                               <input type="email" class="form-control" id="correo">
+                           </div>
+                           <div class="mb-3">
+                             <label for="recipient-name" class="col-form-label">NombreCliente</label>
+                             <input type="text" class="form-control" id="nombre">
+                         </div>
+                          <!--  <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                               <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="registrar_Asesoria()">Guardar</button>
+                               <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="Actualizar_Asesoria()">Actualizar</button>
+                           </div> -->
+                       </form>
+                  </div> 
+                <div class="modal-footer">
+                  <button id="actualizar" type="button" class="btn btn-primary" style="display: block;" onclick="Actualizar_Asesoria()">Actualizar</button>
+                  
+                  <button id="close"  type="button"  class="btn btn-secondary" style="display: block;" data-bs-dismiss="modal" >Close</button>
+                  <button id="registrar" type="button" class="btn btn-primary" style="display: block;" onclick="registrar_Asesoria()">Registrar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</body> 
+<script src="/js/sweetalert2.all.min.js"></script>
+<script src="/js/scrip.js"></script>
+<script src="/js/indexAsesoria.js"></script>
+</html>

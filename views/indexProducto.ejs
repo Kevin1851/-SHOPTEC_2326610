@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+
+     <!-- boostrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <!-- DataTable -->
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+    <title>Administrar Clientes</title>
+</head>
+<body>
+    <nav> 
+        <div>
+            <div>
+                <img id="btn-open" src="img/hamburger_icon.png" alt="">
+            </div>
+            <header>
+                <a href="/InicioAdmin">
+                    <img src="img/logo.png" alt="Img logo">
+                </a>
+            </header>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-user"></i>
+                        <h2>Mi cuenta</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-bell"></i>
+                        <h2>Notificaciones</h2>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="logout()" href="#">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <h2>Cerrar Sesión</h2>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <h2>Ayuda</h2>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="pull-down" id="pull-down">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <h2>Mi cuenta</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-bell"></i>
+                    <h2>Notificaciones</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de usuarios</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de productos</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de categorias</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de empresa</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de asesorias</h2>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de intercambios</h2>
+                </a>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <h2>Administrador de compras</h2>
+                </a>
+            </li> -->
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <h2>Reportes</h2>
+                </a>
+            </li>
+            <li>
+                <a onclick="logout()" href="#">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <h2>Cerrar Sesión</h2>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <h2>Ayuda</h2>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content-all">
+        <div class="main-left">
+            <a href="/listarUsuario">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de usuarios</p>
+            </a>
+            <a href="/listarProducto">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de productos</p>
+            </a>
+            <a href="/listarCategoria">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de categorias</p>
+            </a>
+            <a href="/listarEmpresa">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de empresa</p>
+            </a>
+            <!-- <a href="#">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Administrador de compras</p>
+            </a> -->
+            <a href="/r">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>Reportes</p>
+            </a>
+        </div>
+        <div class="conainer my-1 mx-1">
+            <button type="button" onclick="Abrir_Modal()" class="bottomA btn btn-primary m-3">Nuevo</button>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="overflow-x: scroll;">
+                <table id="tabla_content" class= "table display nowrap mt-2 table-bordered table-striped" style="width: 100%;">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Nombre</th>
+                            <th>Referencia</th>
+                            <th>Descripcion</th>
+                            <th>Tipo Producto</th>
+                            <th>Estado</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Venta</th>
+                            <th>Stock</th>
+                            <th>Categoria</th>
+                            <th>Empresa</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+
+                    <tbody id="tabla"></tbody>
+                </table>
+            </div>
+        <div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar Producto</h5>
+                <button id="salir" type="button" class="btn-close" data-bs-dismiss="modal" style="display: block;" aria-label="Close" ></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <p><b>Todos los campos son obligatorios</b></p>
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" id="id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Referencia</label>
+                            <input type="number" class="form-control" id="referencia">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Descripcion</label>
+                            <input type="text" class="form-control" id="descripcion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Tipo Producto</label>
+                            <select class="form-select" name="estadoProducto" id="tipoProducto" required>
+                            <option selected disabled value="">Tipo Producto</option>
+                            <option>Nuevo</option>
+                            <option>Usado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Estado</label>
+                            <select class="form-select" name="tipoProducto" id="estadoProducto" required>
+                            <option selected disabled value="">Estado Producto</option>
+                            <option>revision</option>
+                            <option>cancelado</option>
+                            <option>ok</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Precio Compra</label>
+                            <input type="number" class="form-control" id="precioCom">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Precio Venta</label>
+                            <input type="number" class="form-control" id="precioVen">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Stock</label>
+                            <input type="number" class="form-control" id="stock">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Categoria</label>
+                            <select class="form-select" name="tipoProducto" id="categoria" required>
+                            <option selected disabled value="">Seleccione</option>
+                            <option value="2">Computador</option>
+                            <option value="1">Telefono</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Empresa</label>
+                            <select class="form-select" name="empresa" id="empresa" required>
+                            <option selected disabled value="">Seleccione</option>
+                            <option value="202020">Shoptecsdd</option>
+                            <option value="202020">Yukuality</option>
+                            </select>
+                        </div>
+                    </form>
+                </div> 
+                <div class="modal-footer">
+                <button id="actualizar" type="button" class="btn btn-primary" onclick="Actualizar_Producto()">Actualizar</button>
+                
+                <button id="close"  type="button"  class="btn btn-secondary" style="display: block;" data-bs-dismiss="modal" >Close</button>
+                <button id="registrar" type="button" class="btn btn-primary" onclick="registrar_Producto()">Registrar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+
+    <!-- boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- DataTable -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    
+    <script src="/js/sweetalert2.all.min.js"></script>
+    <script src="/js/scripProducto.js"></script>
+    <script src="/js/scrip.js"></script>
+</body> 
+</html>
+
+
