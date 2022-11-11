@@ -1,5 +1,4 @@
-"use strict"
-
+pedidosPendientes()
 //Declarando variables:
 
 var botonOpen = document.getElementById("btn-open");
@@ -13,7 +12,7 @@ function dezplegarBarra(){
     barraLateral.classList.toggle("pull-down")
     contentAll.classList.toggle("contenido-barra-dezplegada")
 }
-function logout (){
+function logout(){
     let url = '/auth/lagout';
     let config = {
         method: 'POST',
@@ -28,3 +27,30 @@ function logout (){
     })
     .catch(err => console.log(err))
 }
+let token = localStorage.getItem('token');
+    window.addEventListener("load", async() =>{
+        if(!token) window.location.href = '/'
+        console.log(token)
+    })
+
+
+    /* function identificar_pedido(){
+      
+        fetch(`/pedidosPendientes` ,{
+          method: 'get'
+        })
+        .then(resp=>resp.json())
+        .then(data=>{
+            let pedido = ``
+            data.forEach(element => {
+                pedido+=`"${element.pedidos}"`
+            });
+          console.log(data) 
+          document.getElementById('pedidos').innerHTML= pedido;
+          console.log(pedido)
+        })
+        
+    } */
+    
+    
+   

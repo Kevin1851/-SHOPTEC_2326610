@@ -18,7 +18,7 @@ app.use(session({
 
 var conexion = mysql.createConnection({
     host: 'localhost',
-    database: 'shoptec',
+    database: 'shoptecyuko',
     user:'root',
     password:''
 })
@@ -63,6 +63,7 @@ app.use(require('./routes/routEmpresa'))
 app.use(require('./routes/routCategoria'))
 app.use(require('./routes/routSeguridad'))
 app.use(require('./routes/routReportes'))
+app.use(require('./routes/routPedido'))
 
 
 app.listen(8000, ()=>

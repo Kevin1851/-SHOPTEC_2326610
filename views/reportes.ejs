@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/index.css">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 
@@ -18,7 +19,7 @@
     <nav> 
         <div>
             <div>
-                <i id="btn-open" class="fas fa-bars user"></i>
+                <img id="btn-open" src="img/hamburger_icon.png" alt="">
             </div>
             <header>
                 <a href="/InicioAdmin">
@@ -27,15 +28,10 @@
             </header>
             <ul>
                 <li>
-                    <a href="#">
-                        <i class="fa-solid fa-user"></i>
-                        <h2>Mi cuenta</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="pPendiente">
                         <i class="fa-solid fa-bell"></i>
-                        <h2>Notificaciones</h2>
+                        <h2>Notificaciones <span id="pedidos">
+                        </span></h2>
                     </a>
                 </li>
                 <li>
@@ -97,18 +93,18 @@
                     <h2>Administrador de asesorias</h2>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#">
                     <i class="fa-solid fa-users"></i>
                     <h2>Administrador de intercambios</h2>
                 </a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="#">
                     <i class="fa-solid fa-users"></i>
                     <h2>Administrador de compras</h2>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a href="#">
                     <i class="fa-solid fa-users"></i>
@@ -129,7 +125,7 @@
             </li>
         </ul>
     </div>
-    <div class="content-all">
+    <div id="content-all" class="content-all">
         <div class="main-left">
             <a href="/listarUsuario">
                 <div>
@@ -154,6 +150,18 @@
                     <img src="img/settings_icon.png" alt="">
                 </div>
                 <p>Administrador de empresa</p>
+            </a>
+            <a href="/p">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>pedidos</p>
+            </a>
+            <a href="/pPendiente">
+                <div>
+                    <img src="img/settings_icon.png" alt="">
+                </div>
+                <p>pedidos Pendientes</p>
             </a>
             <!-- <a href="#">
                 <div>
