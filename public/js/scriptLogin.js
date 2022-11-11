@@ -17,7 +17,7 @@ function validarUsuario(){
               if(data.autorizado) {
                 alert('AURTORIZADO')
                 localStorage.setItem('token',data.token);
-                window.location.href = '/index' 
+                window.location.href = '/InicioAdmin' 
               } else {
                 alert('NO AUTORIZADO')
               }

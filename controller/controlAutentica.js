@@ -42,16 +42,17 @@ controlador.validarUsuario=(req,res)=>{
                       
                     }
                 }) 
-                console.log(sql)
-          
+                console.log(sql) 
         }
-            
         } catch (error) {
             console.log("error al validar al usuario" + error)
             
         }
         
 }
+
+
+controlador.entrada
 
 
 controlador.validarToken=(req,res,next)=>{

@@ -24,6 +24,7 @@ function reporte1(){
                             {"data": "identificacion"},
                             {"data": "Nombre"},
                             {"data": "producto"},
+                            {"data": "TipoProducto"},
                             {"data": "cantidad"},
                             {"data": "Precio"},
                             {"data": "Total"}

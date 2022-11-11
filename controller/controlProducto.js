@@ -1,4 +1,5 @@
 const conexion = require('../database/conexionDB')
+const multer = require('multer-js')
 const controlador = {}
 
 /// PASO UNO:  mostrar el inicio 
@@ -8,6 +9,22 @@ controlador.render_inicio=(req, res) =>{
     if(user)res.render('indexProducto.ejs',{user:user});
     else res.redirect('/')
 }
+
+const storage = multer.diskStorage(
+    {
+        destination: function(req, img, cb){
+        cb(null, "public/img");
+        },
+        filename: function(req, img, cb){
+            const dataAhora = Date.now()
+            req.fileNewName = dataAhora + img.originalname;
+            cb(null, req.fileNewName);
+        }
+    }
+);
+
+const uplod = multer({storage : storage});
+controlador.cargarImagen = uplod.single('imgen');
 
 /// PASO DOS: realizar la consulta, mostrar los datos en la page
 controlador.ListarProducto= (req, res)=>{
@@ -22,8 +39,12 @@ controlador.ListarProducto= (req, res)=>{
 
 controlador.registrarProducto=(req,res)=>{
     const{codigo, nombre, referencia, descripcion,  tipoProducto, estadoProducto, precioCom, precioVen, stock, categoria, empresa}=req.body; 
-    console.log(req.body)
-    const sql = `INSERT INTO producto(nombreProducto, referencia, descripcion, tipoProducto, estadoProducto, precioCompra, precioVenta, stock, FK_idCategoria, FK_idEmpresa) VALUES('${nombre}', ${referencia}, '${descripcion}',  '${tipoProducto}', '${estadoProducto}', ${precioCom}, ${precioVen}, ${stock}, ${categoria}, ${empresa})`; 
+    console.log(req.body);
+
+    let imagen = req.fileNewName;
+    console.log(imagen)
+
+    const sql = `INSERT INTO producto(nombreProducto, referencia, descripcion, imgProducto, tipoProducto, estadoProducto, precioCompra, precioVenta, stock, FK_idCategoria, FK_idEmpresa) VALUES('${nombre}', ${referencia}, '${descripcion}', '${imagen}',  '${tipoProducto}', '${estadoProducto}', ${precioCom}, ${precioVen}, ${stock}, ${categoria}, ${empresa})`; 
     console.log('hola'+ sql)
     conexion.query(sql,(err, datos)=>{
         if(err)return res.json({mensaje:"No se pueden registrar los datos" + err});
@@ -35,7 +56,7 @@ controlador.registrarProducto=(req,res)=>{
 
 controlador.buscarProducto=(req, res)=>{
     const id = req.params.PK_codigoProducto;
-    let sql = `SELECT PK_codigoProducto, nombreProducto, referencia, descripcion, tipoProducto, estadoProducto, precioCompra, precioVenta, stock, FK_idCategoria, FK_idEmpresa FROM producto WHERE PK_codigoProducto = ${id}` ;
+    let sql = `SELECT PK_codigoProducto, nombreProducto, referencia, descripcion, imgProducto, tipoProducto, estadoProducto, precioCompra, precioVenta, stock, FK_idCategoria, FK_idEmpresa FROM producto WHERE PK_codigoProducto = ${id}` ;
 
     conexion.query(sql,(error, datos)=>{
         if(error) return res.json({mesaje:'No se a podido realizar la busqueda'});
@@ -48,7 +69,9 @@ controlador.buscarProducto=(req, res)=>{
 controlador.actualizarProducto=(req,res)=>{  
     const{ codigo, nombre, referencia, descripcion,  tipoProducto, estadoProducto, precioCom, precioVen, stock, categoria, empresa}=req.body
 
-    let sql =`update producto set nombreProducto='${nombre}',referencia=${referencia},descripcion='${descripcion}',tipoProducto='${tipoProducto}',estadoProducto='${estadoProducto}', precioCompra=${precioCom}, precioVenta=${precioVen}, stock=${stock}, FK_idCategoria='${categoria}', FK_idEmpresa='${empresa}' 
+    let imagen = req.fileNewName;
+
+    let sql =`update producto set nombreProducto='${nombre}',referencia=${referencia},descripcion='${descripcion}', imgProducto='${imagen}' tipoProducto='${tipoProducto}',estadoProducto='${estadoProducto}', precioCompra=${precioCom}, precioVenta=${precioVen}, stock=${stock}, FK_idCategoria='${categoria}', FK_idEmpresa='${empresa}' 
     where  PK_codigoProducto= ${codigo}`;
 
     console.log(sql)

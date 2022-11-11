@@ -1,7 +1,9 @@
 
 let token = localStorage.getItem('token');
 window.addEventListener("load", async() =>{
-  await Listar_Empresa();
+  await
+   Listar_Empresa()
+  identificar_pedido();
   if(!token) window.location.href = '/'
   console.log(token)
 })
@@ -14,6 +16,24 @@ var MyModal = new bootstrap.Modal(document.getElementById('MyModal'), {
     MyModal.show();
     ocultarBtnActualizar ()
     }
+
+    function identificar_pedido(){
+    
+      fetch(`/pedidosPendientes` ,{
+        method: 'get'
+      })
+      .then(resp=>resp.json())
+      .then(data=>{
+          let pedido = ``
+          data.forEach(element => {
+              pedido+=`"${element.pedidos}"`
+          });
+        console.log(data) 
+        document.getElementById('pedidos').innerHTML= pedido;
+        console.log(pedido)
+      })
+      
+  } 
 
     
         /// ocultar buttom 

@@ -1,7 +1,9 @@
 
   let token = localStorage.getItem('token');
   window.addEventListener("load", async() =>{
-    await Listar_Productos();
+    await 
+    Listar_Productos()
+    identificar_pedido();
     if(!token) window.location.href = '/'
     console.log(token)
   })
@@ -15,6 +17,24 @@
     MyModal.show();
     ocultarBtnActualizar ()
     }
+
+    function identificar_pedido(){
+    
+      fetch(`/pedidosPendientes` ,{
+        method: 'get'
+      })
+      .then(resp=>resp.json())
+      .then(data=>{
+          let pedido = ``
+          data.forEach(element => {
+              pedido+=`"${element.pedidos}"`
+          });
+        console.log(data) 
+        document.getElementById('pedidos').innerHTML= pedido;
+        console.log(pedido)
+      })
+      
+  }
 
      /// Datatable iniciandola
 
@@ -83,6 +103,8 @@ function Actualizar_Producto(){
     datos.append('nombre', document.getElementById('nombre').value)
     datos.append('referencia', document.getElementById('referencia').value)
     datos.append('descripcion', document.getElementById('descripcion').value)
+    let fileImg = document.getElementById('img')
+     datos.append('imgen', ( fileImg.files[0]).value) 
     datos.append('tipoProducto', document.getElementById('tipoProducto').value)
     datos.append('estadoProducto', document.getElementById('estadoProducto').value)
     datos.append('precioCom', document.getElementById('precioCom').value)
@@ -127,6 +149,8 @@ function Actualizar_Producto(){
               document.getElementById('nombre').value=data[0].nombreProducto; 
               document.getElementById('referencia').value=data[0].referencia;
               document.getElementById('descripcion').value=data[0].descripcion;
+              let fileImg = document.getElementById('img')
+              fileImg.value=data[0].imgProducto; 
               document.getElementById('tipoProducto').value=data[0].tipoProducto; 
               document.getElementById('estadoProducto').value=data[0].estadoProducto;
               document.getElementById('precioCom').value=data[0].precioCompra;  
@@ -144,11 +168,13 @@ function Actualizar_Producto(){
 
      function registrar_Producto(){
       if(!validar_Campos()) return alert('COMPLETA CAMPOS');
-        let datos = new URLSearchParams()
+        let datos = new FormData()
         datos.append('codigo', document.getElementById('id').value)
         datos.append('nombre', document.getElementById('nombre').value)
         datos.append('referencia', document.getElementById('referencia').value)
         datos.append('descripcion', document.getElementById('descripcion').value)
+        let fileImg = document.getElementById('img')
+        datos.append('imgen', fileImg.files[0]) 
         datos.append('tipoProducto', document.getElementById('tipoProducto').value)
         datos.append('estadoProducto', document.getElementById('estadoProducto').value)
         datos.append('precioCom', document.getElementById('precioCom').value)
@@ -156,7 +182,8 @@ function Actualizar_Producto(){
         datos.append('stock', document.getElementById('stock').value)
         datos.append('categoria', document.getElementById('categoria').value)
         datos.append('empresa', document.getElementById('empresa').value)
-        console.log(datos)
+        console.log(fileImg)
+        
 
 
         fetch('/registrarProducto',{
@@ -206,6 +233,7 @@ function Actualizar_Producto(){
             {"data": "nombreProducto"},
             {"data": "referencia"},
             {"data": "descripcion"},
+            {"data": "imgProducto"},
             {"data": "tipoProducto"},
             {"data": "estadoProducto"},
             {"data": "precioCompra"},
@@ -217,4 +245,20 @@ function Actualizar_Producto(){
           ]
         }) 
     })
+}
+
+function logout(){
+  let url = '/auth/lagout';
+  let config = {
+      method: 'POST',
+      body: ""
+  }
+  fetch(url, config)
+  .then(res => res.json())
+  .then(data=> {
+      localStorage.removeItem('token');
+      if(data.status == 'error')  return window.location.href = '/'
+      else window.location.href = '/'
+  })
+  .catch(err => console.log(err))
 }

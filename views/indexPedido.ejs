@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 
     <!-- boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -177,20 +177,54 @@
             </a>
         </div>
         <div class="conainer my-1 mx-1">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"  style="overflow-x: scroll;">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"  >
                     <table id="tabla_content"  class= "table display nowrap mt-2 table-bordered table-striped " style="width: 100%;">
                         <thead>
                             <tr class="text-center">
+                            <th>Nº</th>
                             <th>Cliente</th>
+                            <th>Estado</th>
                             <th>Fecha</th>
-                            <th>Producto</th>
-                            <th>Precio Total</th>
+                            <th>Acciones</th>
                             </tr>
                         </thead>
             
                         <tbody id="tabla"></tbody>
                     </table>
                 </div>
+        </div>
+    </div>
+    <div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Actualizar pedido</h5>
+            <button id="salir" type="button" class="btn-close" style="display: block;" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <p><b>Todos los campos son obligatorios</b></p>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nª</label>
+                        <input type="number" class="form-control" id="id" readonly>
+                        </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Estado</label>
+                        <select class="form-select" name="estadoProducto" id="estado" required>
+                        <option selected disabled value="">Estado</option>
+                        <option>Pendiente</option>
+                        <option>Aprobado</option>
+                        <option>Cancelado</option>
+                        </select>
+                    </div>
+                </form>
+            </div> 
+            <div class="modal-footer">
+            <button id="actualizar" type="button" class="btn btn-primary" style="display: block;" onclick="Actualizar_Pedido()">Actualizar</button>
+
+            <button id="close" type="button" class="btn btn-secondary" style="display: block;" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
         </div>
     </div>
 

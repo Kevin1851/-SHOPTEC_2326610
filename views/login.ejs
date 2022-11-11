@@ -61,6 +61,7 @@
     
     
   
+    <script src="js/scriptLogin.js"></script>
     
   <!--===============================================================================================-->	
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -80,38 +81,3 @@
     <script src="js/main.js"></script>
 
     </body>
-
-    <script>
-      function validarUsuario(){    
-          let datos= new URLSearchParams();
-      
-          datos.append('correo',document.getElementById('correo').value);
-          datos.append('password',document.getElementById('password').value);
-  
-          /* let correo = document.getElementById('correo').value;
-          let pass = document.getElementById('password').value;
-  
-          let fff = correo + pass
-  
-           console.log(fff) */
-              fetch('/validar',
-                  {
-                      method: 'POST',
-                      body:datos
-                  })
-                   .then(resp =>{
-                    if(resp.status == 200) return resp.json();
-                    if(resp.status == 403) alert('Usuario no autorizado')
-                  })
-                  .then(data =>{
-                    if(data.autorizado) {
-                      alert('AURTORIZADO')
-                      localStorage.setItem('token',data.token);
-                      window.location.href = '/Home' 
-                    } else {
-                      alert('NO AUTORIZADO')
-                    }
-                  }); 
-         
-      }
-      </script>
