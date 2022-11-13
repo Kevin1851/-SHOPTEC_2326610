@@ -38,7 +38,7 @@ data.forEach(element => {
 		cards+=`<div class='col-md-4 col-xs-6'>`;
 			cards+=`<div class="product" >
 				  		<div class="product-img">
-							<img src="/img/${element.img}" class="product-img" alt="...">
+							<img src="/img/${element.imgProducto}" class="product-img" alt="...">
 				 	 	</div>
 						<div class="product-body">
 							<p class="product-name">${element.nombreProducto}</p>
@@ -92,15 +92,5 @@ console.log(data +" "+ datos)
  });
 }
 
-function cantidadDeLaCompra(	){
-
-fetch('/cantidadComprada', {
-method :'get',
-})
-.then(resp => resp.json())
-.then(data =>{
-document.getElementById('cantidadPdto').innerHTML=data[0].cantidadPdto;
-});
-}
 </script>
 

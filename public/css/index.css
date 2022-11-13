@@ -6,7 +6,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 /* Botones */
+
+
 
 .bottomA{
     background-color: rgb(0,91,173) !important;
@@ -90,81 +93,46 @@ div .dt-buttons .buttons-copy:hover {
     transform: scale(0.95);
 }
 div .dt-buttons .buttons-csv   {
-    box-shadow:  5px 5px 10px rgb(143, 142, 142);
-    margin: 0px 2px ;
+    background-color: rgb(243, 240, 240);
+    border-color: gainsboro;
+    box-shadow: 0px 5px 10px rgb(143, 142, 142);
+    margin: 0px 5px ;
+    padding: 6px;
     width: 50px;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    padding: 2px;
-    font-size: 1rem;
 }
 div .dt-buttons .buttons-csv:hover {
     transform: scale(0.95);
 }
 div .dt-buttons .buttons-excel   {
+    background-color: rgb(243, 240, 240);
+    border-color: gainsboro;
+    /* box-shadow: 0px 0px 5px 0px rgb(77, 76, 76) inset; */
     box-shadow:  5px 5px 10px rgb(143, 142, 142);
     margin: 0px 2px ;
+    padding: 6px;
     width: 50px;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    padding: 2px;
-    font-size: 1rem;
 }
 div .dt-buttons .buttons-excel:hover {
     transform: scale(0.95);
 }
 div .dt-buttons .buttons-pdf   {
-    box-shadow:  5px 5px 10px rgb(143, 142, 142);
-    margin: 0px 2px ;
+    background-color: rgb(243, 240, 240);
+    border-color: gainsboro;
+    box-shadow: 0px 5px 10px rgb(143, 142, 142);
+    margin: 0px 5px ;
+    padding: 6px;
     width: 50px;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    padding: 2px;
-    font-size: 1rem;
 }
 div .dt-buttons .buttons-pdf:hover {
     transform: scale(0.95);
 }
 div .dt-buttons .buttons-print   {
+    background-color: rgb(243, 240, 240);
+    border-color: gainsboro;
     box-shadow:  5px 5px 10px rgb(143, 142, 142);
     margin: 0px 2px ;
+    padding: 6px;
     width: 50px;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    padding: 2px;
-    font-size: 1rem;
 }
 div .dt-buttons .buttons-print:hover {
     transform: scale(0.95);

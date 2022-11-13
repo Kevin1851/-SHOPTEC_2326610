@@ -38,7 +38,7 @@ data.forEach(element => {
 		cards+=`<div class='col-md-4 col-xs-6'>`;
 			cards+=`<div class="product" >
 				  		<div class="product-img">
-							<img src="/img/${element.img}" class="product-img" alt="...">
+							<img src="/img/${element.imgProducto}" class="product-img" alt="...">
 				 	 	</div>
 						<div class="product-body">
 							<p class="product-name">${element.nombreProducto}</p>
@@ -60,22 +60,6 @@ document.getElementById('listaProducto').innerHTML=cards;
 });
 };
 
-function registrarLaCompra(idProducto){
-let datos = new URLSearchParams();
-  datos.append('idProducto', idProducto)
-  
- fetch('/registroDeCompras', {
-	method :'POST',
-	body:datos
- })
- .then(resp => resp.text())
- .then(data =>{
-	
-//   cantidadComprada();
-alert(data);
- });
-}
-
 function registrarCarrito(idProducto){
 let datos = new URLSearchParams();
   	datos.append('idProducto', idProducto);
@@ -89,20 +73,8 @@ let datos = new URLSearchParams();
 	cantidadDeLaCompra();
 	listaTodosLosProductos();
 	listaTodosProductosCarrito();
-	alert(data + " " + datos);
 	console.log(data +" "+ datos)
  });
-}
-
-function cantidadDeLaCompra(){
-
-fetch('/cantidadComprada', {
-method :'get',
-})
-.then(resp => resp.json())
-.then(data =>{
-document.getElementById('cantidadPdto').innerHTML=data[0].cantidadPdto;
-});
 }
 </script>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2022 a las 03:19:22
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 11-11-2022 a las 17:41:31
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `shoptecyuko`
+-- Base de datos: `shoptec`
 --
 
 -- --------------------------------------------------------
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carrito` (
-  `PKIdCarrito` int(10) NOT NULL,
+  `PKidCarrito` int(10) NOT NULL,
   `cantidadPdto` int(10) NOT NULL,
   `idUsuarioC` int(10) NOT NULL,
   `idProductoC` int(10) NOT NULL
@@ -73,8 +73,43 @@ CREATE TABLE `detalleventa` (
 --
 
 INSERT INTO `detalleventa` (`PK_idDetalleCompra`, `cantidadProducto`, `FK_idCompra`, `FK_idProducto`) VALUES
-(1, 2, 1, 10),
-(2, 4, 2, 11);
+(6, 2, 21, 8),
+(7, 2, 22, 8),
+(8, 2, 23, 8),
+(9, 2, 24, 8),
+(10, 2, 24, 8),
+(11, 2, 24, 9),
+(12, 2, 24, 9),
+(13, 2, 24, 10),
+(14, 2, 25, 8),
+(15, 2, 25, 8),
+(16, 2, 25, 9),
+(17, 2, 25, 9),
+(18, 2, 25, 10),
+(19, 2, 26, 8),
+(20, 2, 26, 8),
+(21, 2, 26, 9),
+(22, 2, 26, 9),
+(23, 2, 26, 10),
+(24, 2, 27, 8),
+(25, 2, 27, 8),
+(26, 2, 27, 9),
+(27, 2, 27, 9),
+(28, 2, 27, 10),
+(29, 2, 28, 8),
+(30, 2, 28, 8),
+(31, 2, 28, 9),
+(32, 2, 28, 9),
+(33, 2, 28, 10),
+(34, 2, 29, 9),
+(35, 2, 29, 8),
+(36, 3, 29, 10),
+(37, 2, 30, 9),
+(38, 2, 30, 8),
+(39, 3, 30, 10),
+(40, 2, 31, 9),
+(41, 2, 31, 8),
+(42, 3, 31, 10);
 
 -- --------------------------------------------------------
 
@@ -125,10 +160,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`PK_codigoProducto`, `nombreProducto`, `referencia`, `descripcion`, `imgProducto`, `tipoProducto`, `estadoProducto`, `precioCompra`, `precioVenta`, `stock`, `FK_idCategoria`, `FK_idEmpresa`) VALUES
-(8, 'tecno camon 17', '1111', 'Delicado y un poco pequeño', '', 'Nuevo', 'cancelado', '1232.00', '0.000', 32, 2, 202020),
-(9, 'ewew', '-1', 'wedsfer', '', 'Nuevo', 'revision', '2332.00', '23.000', 12233, 2, 202020),
-(10, 'remid', '2032932', 'Delicado y un poco pequeño', '', 'Nuevo', 'cancelado', '2323223.00', '9999999.999', 3, 2, 202020),
-(11, 'ensayo', '121212', 'ensayando ', '', 'Nuevo', 'ok', '10000.00', '20000.000', 3, 4, 121212);
+(8, 'tecno camon 17', '1111', 'Delicado y un poco pequeño', '1666058137072iphone.png', 'Nuevo', 'cancelado', '1232.00', '0.000', 2, 2, 202020),
+(9, 'ewew', '-1', 'wedsfer', 'product02.png', 'Nuevo', 'revision', '2332.00', '23.000', 4, 2, 202020),
+(10, 'remid', '2032932', 'Delicado y un poco pequeño', 'product07.png', 'Nuevo', 'cancelado', '2323223.00', '9999999.999', 5, 2, 202020),
+(11, 'ensayo', '121212', 'ensayando ', 'product06.png', 'Nuevo', 'ok', '10000.00', '20000.000', 10, 4, 121212);
 
 -- --------------------------------------------------------
 
@@ -181,8 +216,18 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`PK_idCompra`, `fechaCompra`, `estadoVenta`, `FK_idUsuario`) VALUES
-(1, '2022-10-10', 'Pendiente', 14),
-(2, '2022-10-31', 'Pendiente', 13);
+(20, '2022-11-11', 'Pendiente', 11),
+(21, '2022-11-11', 'Pendiente', 11),
+(22, '2022-11-11', 'Pendiente', 11),
+(23, '2022-11-11', 'Pendiente', 11),
+(24, '2022-11-11', 'Pendiente', 11),
+(25, '2022-11-11', 'Pendiente', 11),
+(26, '2022-11-11', 'Pendiente', 11),
+(27, '2022-11-11', 'Pendiente', 11),
+(28, '2022-11-11', 'Pendiente', 11),
+(29, '2022-11-11', 'Pendiente', 11),
+(30, '2022-11-11', 'Pendiente', 11),
+(31, '2022-11-11', 'Pendiente', 11);
 
 --
 -- Índices para tablas volcadas
@@ -192,7 +237,7 @@ INSERT INTO `venta` (`PK_idCompra`, `fechaCompra`, `estadoVenta`, `FK_idUsuario`
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`PKIdCarrito`);
+  ADD PRIMARY KEY (`PKidCarrito`);
 
 --
 -- Indices de la tabla `categoria`
@@ -244,8 +289,12 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
 ALTER TABLE `carrito`
-  MODIFY `PKIdCarrito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT
+  MODIFY `PKidCarrito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
@@ -256,7 +305,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `PK_idDetalleCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PK_idDetalleCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -274,7 +323,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `PK_idCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PK_idCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas

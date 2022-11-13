@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body>  <%- include('./partials/head')  %>
-	
+  <body>  
+    <style>
+
+    </style>
+    <%- include('./partials/head')  %>
         <%- include('./partials/header')  %>
         <%- include('./partials/navigation')  %>
 
     
-   
+    <!-- Modal -->
+    <div class="modal fade" id="modalDetalles" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDetallesLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalDetallesLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
     <div class="container">
    
             <h1 class="text-center">Lista De compras</h1>
-    
-          
+
+            <table class="table table-bordered" id="tabla-detalle"> 
+                <thead>
+                    <tr>
+                        <th colspan="3"><center>DETALLES DE LA COMPRA</center></th>
+                    </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Compra</th>
+                        <th>Cantidad Compra</th>
+                        <th>Nombre Producto</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla"></tbody>
+            </table>
 
             <table id="tabla_content" class= "table display nowrap mt-2 table-bordered table-striped " style="width: 100%;">
-                <th>ID</th>
+                <th>Compra</th>
+                <th>Fecha</th>
                 <th>Nombre Usuario</th>
-                <th>Fecha Compra</th>
+                <th>Estado de la Compra</th>
+                <th>Acción</th>
             <tbody>
                 <% for(var i=0;i<Listado_Compra.length;i++){ %> 
                     <tr >
                         <td><%=Listado_Compra[i].PK_idCompra%></td>
-                        <td><%=Listado_Compra[i].nombreUsuario%></td>
                         <td><%=Listado_Compra[i].fechaCompra%></td>
-                        
+                        <td><%=Listado_Compra[i].nombreUsuario%></td>
+                        <td><%=Listado_Compra[i].estadoVenta%></td>
+                        <td><a href="javascript:listarDetalles(<%=Listado_Compra[i].PK_idCompra%>)">Ver detalles</a></td>
                     </tr>
                 <% } %>  
             </tbody>
@@ -40,8 +76,28 @@
 </body>
 </html>
  <script>
- 
- 
+
+
+
+    function listarDetalles(id){
+        var modalDetalles = new bootstrap.Modal(document.getElementById('modalDetalles'))
+        fetch('/listarDetalleCompra/'+id)
+        .then(res => res.json())
+        .then(data => {
+            let rows = '';
+            let cuerpoTabla = document.getElementById('cuerpo-tabla');
+            data.forEach(detalle => {
+                console.log(detalle)
+                rows += `<tr>
+                    <td>${detalle.estadoVenta}</td>
+                    <td>${detalle.FK_idCompra}</td>
+                    <td>${detalle.cantidadProducto}</td>
+                    <td>${detalle.nombreProducto}</td>
+                </tr>`;
+            });
+            cuerpoTabla.innerHTML = rows;
+        })
+    }
  
  </script>
  

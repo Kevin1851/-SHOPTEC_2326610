@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>  <%- include('./partials/head')  %>
+	
+        <%- include('./partials/header')  %>
+        <%- include('./partials/navigation')  %>
+
+    
+   
+
+    <div class="container">
+   
+            <h1 class="text-center">Lista De compras</h1>
+                    
+            
+
+            <table id="tabla_content" class= "table display nowrap mt-2 table-bordered table-striped " style="width: 100%;">
+                <th>Compra</th>
+                <th>Fecha</th>
+                <th>Nombre Usuario</th>
+                <th>Estado de la Compra</th>
+                
+            <tbody>
+                <% for(var i=0;i<Listado_Compra.length;i++){ %> 
+                    <tr >
+                        <td><%=Listado_Compra[i].PK_idCompra%></td>
+                        <td><%=Listado_Compra[i].fechaCompra%></td>
+                        <td><%=Listado_Compra[i].nombreUsuario%></td>
+                        <td><%=Listado_Compra[i].estadoVenta%></td>
+                        <td><%=Listado_Compra[i].estadoVenta%></td>
+                        <td><%=Listado_Compra[i].estadoVenta%></td>
+                        <td><%=Listado_Compra[i].estadoVenta%></td>
+                        
+                    </tr>
+                <% } %>  
+            </tbody>
+            </table>
+            
+    </div>
+
+
+    
+  	<div>
+		<%- include('./partials/footer.ejs')  %>
+	</div>
+</body>
+</html>
+ <script>
+ 
+ 
+ 
+ </script>
+ 
