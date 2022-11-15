@@ -138,7 +138,7 @@ function Actualizar_Producto(){
         Swal.fire({
         position: 'Estado',
         icon: 'success',
-        title: data.mensaje,
+        title: "Producto Actualizado",
         showConfirmButton: false,
         timer: 1500
         })
@@ -196,7 +196,7 @@ function Actualizar_Producto(){
         datos.append('categoria', document.getElementById('categoria').value)
         datos.append('empresa', document.getElementById('empresa').value)
         console.log(fileImg.files[0])
-        
+        Listar_Productos();
 
 
         fetch('/registrarProducto',{

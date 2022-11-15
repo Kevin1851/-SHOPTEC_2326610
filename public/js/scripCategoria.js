@@ -15,6 +15,10 @@ var MyModal = new bootstrap.Modal(document.getElementById('MyModal'), {
     function Abrir_Modal(){
         MyModal.show();
         ocultarBtnActualizar () 
+        if(validar_Campos()) {
+          document.getElementById('id').value="";
+          document.getElementById('nombre').value="";
+          };
         }
 
 
@@ -81,7 +85,7 @@ function Actualizar_Categoria(){
             Swal.fire({
             position: 'Estado',
             icon: 'success',
-            title: data.mensaje,
+            title: "Categoria Actualizada",
             showConfirmButton: false,
             timer: 1500
             })

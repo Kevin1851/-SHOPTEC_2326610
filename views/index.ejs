@@ -4,26 +4,36 @@
 	
         <%- include('./partials/header')  %>
         <%- include('./partials/navigation')  %>
-	<!-- </body> -->
-<!-- </html> -->
 
-<div class="container">
-	<div id="listaProducto">
-	</div>
-  </div>
-   <!-- funcion para venta -->
-  <!-- <a href='javascript:registrarLaCompra(${element.PK_codigoProducto})' class='add-to-cart-btn' > Comprar </a>  -->
+		<div class="container">
+			<div id="listaProducto">
+			</div>
+		</div>
 
-
-  	<div>
-		<%- include('./partials/footer.ejs')  %>
-	</div>
+  		<div>
+			<%- include('./partials/footer.ejs')  %>
+		</div>
 
 </body>
 </html>
 <script>
  listaTodosLosProductos();
  cantidadDeLaCompra();
+
+let contador = 0;
+let unidades = document.getElementById('productoCantidad-'+idProducto).value
+
+function aumentar(){
+    if(contador < 10) {
+        alert(unidades);
+    }
+}
+
+function disminuir(){
+    if(contador > 0) {
+        document.getElementById('productoCantidad-').value = --contador;
+    }
+}
 
 
 function listaTodosLosProductos () {
@@ -38,7 +48,7 @@ data.forEach(element => {
 		cards+=`<div class='col-md-4 col-xs-6'>`;
 			cards+=`<div class="product" >
 				  		<div class="product-img">
-							<img src="/img/${element.img}" class="product-img" alt="...">
+							<img src="/img/${element.imgProducto}" class="product-img" alt="...">
 				 	 	</div>
 						<div class="product-body">
 							<p class="product-name">${element.nombreProducto}</p>
@@ -48,8 +58,12 @@ data.forEach(element => {
 						
 
 						<div class="add-to-cart">
-							<a href='javascript:registrarCarrito(${element.PK_codigoProducto})' class='add-to-cart-btn' > Carrito </a>
-							<input type="number" class="form-control" id="productoCantidad-${element.PK_codigoProducto}" >
+							<a href='javascript:registrarCarrito(${element.PK_codigoProducto})' class='add-to-cart-btn' >Añadir al carrito</a>
+							<div class="cantidadUnidades">
+								<a href='javascript:disminuir();' class='suma' ></a>
+                						<input class="numeroUnidades" type="text" id="productoCantidad-${element.PK_codigoProducto}" value="0">
+								<a href='javascript:aumentar();' class='resta' ></a>
+            				</div>
 						</div>
 						
 					</div>`
@@ -59,22 +73,6 @@ cards+=`</div>`;
 document.getElementById('listaProducto').innerHTML=cards;
 });
 };
-
-function registrarLaCompra(idProducto){
-let datos = new URLSearchParams();
-  datos.append('idProducto', idProducto)
-  
- fetch('/registroDeCompras', {
-	method :'POST',
-	body:datos
- })
- .then(resp => resp.text())
- .then(data =>{
-	
-//   cantidadComprada();
-alert(data);
- });
-}
 
 function registrarCarrito(idProducto){
 let datos = new URLSearchParams();
@@ -89,20 +87,9 @@ let datos = new URLSearchParams();
 	cantidadDeLaCompra();
 	listaTodosLosProductos();
 	listaTodosProductosCarrito();
-	alert(data + " " + datos);
 	console.log(data +" "+ datos)
  });
 }
 
-function cantidadDeLaCompra(){
-
-fetch('/cantidadComprada', {
-method :'get',
-})
-.then(resp => resp.json())
-.then(data =>{
-document.getElementById('cantidadPdto').innerHTML=data[0].cantidadPdto;
-});
-}
 </script>
 

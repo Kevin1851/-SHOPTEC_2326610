@@ -112,7 +112,7 @@ function validateEmail(){
         Swal.fire({
         position: 'Estado',
         icon: 'success',
-        title: data.mensaje,
+        title: "Usuario actualizado",
         showConfirmButton: false,
         timer: 1500
         })

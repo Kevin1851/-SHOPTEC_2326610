@@ -28,7 +28,7 @@ controlador.cargarImagen = uplod.single('imgen');
 
 /// PASO DOS: realizar la consulta, mostrar los datos en la page
 controlador.ListarProducto= (req, res)=>{
-    let sql = "SELECT * FROM  producto;"
+    let sql = "SELECT PK_codigoProducto, nombreProducto, referencia, descripcion, imgProducto, tipoProducto, estadoProducto, precioCompra, precioVenta, stock, c.nombreCategoria as FK_idCategoria, e.nombre as FK_idEmpresa FROM producto as p JOIN categoria as c on c.PK_idCategoria = p.FK_idCategoria JOIN empresa as e on e.PK_nitEmpresa = p.FK_idEmpresa;"
     conexion.query(sql,(err, result)=>{
         if(err) return res.json({mesaje:"Error al realizar la consulta"});
         else return res.json(result);

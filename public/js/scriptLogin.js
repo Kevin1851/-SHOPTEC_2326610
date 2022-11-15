@@ -15,16 +15,12 @@ function validarUsuario(){
             })
             .then(data =>{
               if(data.autorizado) {
-               
-                
-                alert('AURTORIZADO')
                 localStorage.setItem('token',data.token);
                
                 console.log(data)
                 if(data.data.tipoUsuario == "Administrador")  window.location.href = '/InicioAdmin' 
                 else  window.location.href = '/Home' 
               } else {
-                alert('NO AUTORIZADO')
               }
             });
 }

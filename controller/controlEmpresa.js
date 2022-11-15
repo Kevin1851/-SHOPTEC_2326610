@@ -11,7 +11,7 @@ controlador.render_inicio=(req, res) =>{
 
 /// PASO DOS: realizar la consulta, mostrar los datos en la page
 controlador.ListarEmpresa= (req, res)=>{
-    let sql = "SELECT * FROM  empresa;"
+    let sql = "SELECT PK_nitEmpresa, nombre, ubicacion, nombreUsuario as FK_propietario  FROM empresa as e join usuario as u on PK_id_usuario = FK_propietario;"
     conexion.query(sql,(err, result)=>{
         if(err) return res.json({mesaje:"Error al realizar la consulta"});
         else return res.json(result);

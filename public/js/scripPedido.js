@@ -75,7 +75,7 @@ function pedidos(){
         Swal.fire({
         position: 'Estado',
         icon: 'success',
-        title: data.mensaje,
+        title: "Actualizado Correctamente",
         showConfirmButton: false,
         timer: 1500
         })

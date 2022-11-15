@@ -15,6 +15,12 @@ var MyModal = new bootstrap.Modal(document.getElementById('MyModal'), {
     function Abrir_Modal(){
     MyModal.show();
     ocultarBtnActualizar ()
+    if(validar_Campos()) {
+      document.getElementById('id').value="";
+      document.getElementById('nombre').value="";
+      document.getElementById('ubicacion').value="";
+      document.getElementById('propieatrio').value="";
+      };
     }
 
     function identificar_pedido(){
