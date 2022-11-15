@@ -4,16 +4,11 @@
 	
         <%- include('./partials/header')  %>
         <%- include('./partials/navigation')  %>
-	<!-- </body> -->
-<!-- </html> -->
 
-<div class="container">
-	<div id="listaProducto">
-	</div>
-  </div>
-   <!-- funcion para venta -->
-  <!-- <a href='javascript:registrarLaCompra(${element.PK_codigoProducto})' class='add-to-cart-btn' > Comprar </a>  -->
-
+	<div class="container">
+		<div id="listaProducto">
+		</div>
+  	</div>
 
   	<div>
 		<%- include('./partials/footer.ejs')  %>
@@ -48,8 +43,12 @@ data.forEach(element => {
 						
 
 						<div class="add-to-cart">
-							<a href='javascript:registrarCarrito(${element.PK_codigoProducto})' class='add-to-cart-btn' > Carrito </a>
-							<input type="number" class="form-control" id="productoCantidad" >
+							<a href='javascript:registrarCarrito(${element.PK_codigoProducto})' class='add-to-cart-btn' >Añadir al carrito</a>
+							<div class="cantidadUnidades">
+								<a href='javascript:disminuir();' class='suma' ></a>
+                						<input readonly class="numeroUnidades" type="text" id="productoCantidad-${element.PK_codigoProducto}" value="0">
+								<a href='javascript:aumentar();' class='resta' ></a>
+            				</div>
 						</div>
 						
 					</div>`

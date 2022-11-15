@@ -244,8 +244,6 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
-ALTER TABLE `carrito`
-  MODIFY `PKIdCarrito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --

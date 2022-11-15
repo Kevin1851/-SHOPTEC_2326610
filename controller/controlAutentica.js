@@ -1,12 +1,7 @@
-
 const conexion= require('../database/conexionDB');
 const jwt= require('jsonwebtoken')
 
 const controlador={}
-
-
-
-
 
 /// PASO UNO:  mostrar el inicio 
 

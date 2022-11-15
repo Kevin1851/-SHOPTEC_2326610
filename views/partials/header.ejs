@@ -15,7 +15,7 @@
             </ul>
             <ul class="header-links pull-right">
                 <!-- 	 -->
-                <li><a href="./"><i class="fa fa-user-o"></i> MI CUENTA</a></li>
+                <li><a id="nombre-ususario" href="#"><i class="fa fa-user-o"></i></a></li>
             </ul>
         </div>
     </div>
@@ -61,66 +61,33 @@
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
-                        <!-- Wishlist -->
-                        <div>
-                          <!--   <a href="#">
-                                <i class="fa fa-heart-o"></i>
-                                <span>Favoritos</span>
-                                <div class="qty">2</div> -->
-                            </a> 
-                        </div>
-                        <!-- /Wishlist -->
 
-                        <!-- Cart -->
                         <div class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <i class="fa fa-shopping-cart"></i>
+                                
 
                                 
                                 <button type="button"  class="btn btn-primary position-relative"  >
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" >
-                                        <div id='cantidadPdto'>0</div>
-                                        <span class="visually-hidden"></span>
+                                    <div style="display: flex;justify-content:center;">
+                                        <i style="margin: auto 4px;" class="fa fa-shopping-cart"></i>
+                                        <div style="margin: auto 4px;" id='cantidadPdto'>0</div>
+                                    </div>
+                                    <span>Carrito de compras</span>
                                 </button>
 
-                                    <br>
-                                <span>Carrito</span>
-                                <!-- <div class="qty">3</div> -->
+                                
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
-                                    <!-- <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div> -->
 
                                     <div  >
                                         <div  id="listaProductoCarrito">
                                         </div>
-                                      </div  >
-                                    <!-- <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="./img/product02.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div> -->
+                                    </div  >
+
                                 </div>
-                                <!-- <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
-                                </div> -->
                                 <div class="cart-btns">
-                                    <a onclick="registrarLaCompra()" class="text-center"> Comprar</a>
+                                    <a style="cursor: pointer;" onclick="registrarLaCompra()" class="text-center"> Comprar</a>
                                     
                                     <a href="/listarCompra" class="text-center">Listar Compra</a>
                                 </div> 
@@ -148,110 +115,94 @@
 </header>
 <script>
 
-let productosCarrito = [];
 
-listaTodosProductosCarrito ();
+    let productosCarrito = [];
 
-function cantidadDeLaCompra(){
+    listaTodosProductosCarrito ();
 
-fetch('/cantidadComprada', {
-method :'get',
-})
-.then(resp => resp.json())
-.then(data =>{
-    let cuenta = 0;
-    if(data[0].cantidadPdto) cuenta = data[0].cantidadPdto;
-document.getElementById('cantidadPdto').innerHTML=cuenta;
-});
-}
+    function cantidadDeLaCompra(){
 
-function listaTodosProductosCarrito () {
-fetch('/listarTodosLosProductosDelCarrito',{
-	method:'GET'
-})
-.then(resp => resp.json())
-.then(data=>{
-    this.productosCarrito = data;
-    let cards = `<div class="product-widget">`;
-    data.forEach(element => {
-            cards+=`<div class="product-widget"`;
-            cards+=	`<div class="product-widget">
-
-                            <div class="product-img">
-                                <img src="/img/${element.imgProducto}" class="product-img"  alt="...">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-name">${element.nombreProducto}</p>
-                                <p class="product-name">${element.cantidadPdto}</p>
-                            </div>
-                            
-                            
-                        </div>`
-        cards+=`</div>`;
-    });
-    cards+=`</div>`;
-    document.getElementById('listaProductoCarrito').innerHTML=cards;
-    });
-};
-
-
-function limpiarCarritoCompra(){
-    fetch('/limpiarCarrito', {
-        method :'POST',
+    fetch('/cantidadComprada', {
+    method :'get',
     })
     .then(resp => resp.json())
     .then(data =>{
-        cantidadDeLaCompra();
-        listaTodosProductosCarrito();
+        let cuenta = 0;
+        if(data[0].cantidadPdto) cuenta = data[0].cantidadPdto;
+    document.getElementById('cantidadPdto').innerHTML=cuenta;
     });
-}
+    }
 
-function registrarLaCompra(idProducto){
-    let datos = new URLSearchParams();
-    this.productosCarrito.forEach(producto => {
-        datos.append('idProducto', idProducto)
-        fetch('/registroDeCompras', {
+    function listaTodosProductosCarrito () {
+    fetch('/listarTodosLosProductosDelCarrito',{
+    	method:'GET'
+    })
+    .then(resp => resp.json())
+    .then(data=>{
+        this.productosCarrito = data;
+        let cards = `<div class="product-widget">`;
+        data.forEach(element => {
+                cards+=`<div class="product-widget"`;
+                cards+=	`<div class="product-widget">
+
+                                <div class="product-img">
+                                    <img src="/img/${element.imgProducto}" class="product-img"  alt="...">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-name">${element.nombreProducto}</p>
+                                    <p class="product-name">${element.cantidadPdto}</p>
+                                </div>
+
+                            </div>`
+            cards+=`</div>`;
+        });
+        cards+=`</div>`;
+        document.getElementById('listaProductoCarrito').innerHTML=cards;
+        });
+    };
+
+
+    function limpiarCarritoCompra(){
+        fetch('/limpiarCarrito', {
             method :'POST',
-            body:datos
         })
         .then(resp => resp.json())
         .then(data =>{
-            this.productosCarrito.forEach(producto => {
-                let datosDetalle = new URLSearchParams();
-                console.log(producto);
-                datosDetalle.append('PK_codigoProducto', producto.idProductoC)
-                datosDetalle.append('cantidadPdto', producto.cantidadPdto);
-                datosDetalle.append('idCompra', data.idCompra)
-                fetch('/registrarDetalleCompra', {
-                    method :'POST',
-                    body:datosDetalle
-                })
-                .then(resp => resp.text())
-                .then(data =>{
-                    console.log(data)
-                });
-            });
-            limpiarCarritoCompra();
-        //   cantidadComprada();
+            cantidadDeLaCompra();
+            listaTodosProductosCarrito();
         });
-        
-    });
-}
+    }
 
-// function eliminarLaCompra(ident){
-  
-//  fetch('/EliminarCompra/${ident}', {
-//  method :'GET'
-//  })
-//  .then(resp => resp.text())
-//  .then(data =>{
-// //   cantidadComprada();
-// alert(data);
-//  });
-// }
+    function registrarLaCompra(idProducto){
+        let datos = new URLSearchParams();
+        this.productosCarrito.forEach(producto => {
+            datos.append('idProducto', idProducto)
+            fetch('/registroDeCompras', {
+                method :'POST',
+                body:datos
+            })
+            .then(resp => resp.json())
+            .then(data =>{
+                this.productosCarrito.forEach(producto => {
+                    let datosDetalle = new URLSearchParams();
+                    console.log(producto);
+                    datosDetalle.append('PK_codigoProducto', producto.idProductoC)
+                    datosDetalle.append('cantidadPdto', producto.cantidadPdto);
+                    datosDetalle.append('idCompra', data.idCompra)
+                    fetch('/registrarDetalleCompra', {
+                        method :'POST',
+                        body:datosDetalle
+                    })
+                    .then(resp => resp.text())
+                    .then(data =>{
+                        console.log(data)
+                    });
+                });
+                limpiarCarritoCompra();
+            //   cantidadComprada();
+            });
 
-// funcion javascript para realizar la compra
-// <div class="add-to-cart">
-//     <button onclick='registrarLaCompra(${element.PK_codigoProducto})' class="btn btn-primary position-relative" > Comprar </button>
-// </div>
+        });
+    }
+
 </script>

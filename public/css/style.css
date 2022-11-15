@@ -8,7 +8,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: #2B2D42;
   font-weight: 700;
-  margin: 0 0 10px;
 }
 
 a {
@@ -388,18 +387,15 @@ textarea.input {
 \*----------------------------*/
 
 #header {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  height: 80px;
   background-color: rgb(0, 91, 173);
 }
 
 .header-logo {
   float: left;
+  height: 80px;
 }
 
-.header-logo .logo img {
-  display: block;
-}
 
 /*----------------------------*\
 	Search
@@ -438,7 +434,9 @@ textarea.input {
 \*----------------------------*/
 
 .header-ctn {
-  float: right;
+  /* float: right; */
+  display: flex;
+  justify-content: center;
   padding: 15px 0px;
 }
 
@@ -959,32 +957,26 @@ textarea.input {
 }
 
 .product .add-to-cart {
-  position: absolute;
-  left: 1px;
-  right: 1px;
-  bottom: 1px;
-  padding: 15px;
-  background: #1e1f29;
+  padding: 10px;
+  background: #005bad;
   text-align: center;
-  -webkit-transform: translateY(0%);
-  -ms-transform: translateY(0%);
-  transform: translateY(0%);
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
   z-index: 2;
 }
 
 .product:hover .add-to-cart {
-  -webkit-transform: translateY(100%);
-  -ms-transform: translateY(100%);
-  transform: translateY(100%);
+  -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
+  box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
 }
 
 .product .add-to-cart .add-to-cart-btn {
-  position: relative;
   border: 2px solid transparent;
   height: 40px;
-  padding: 0 30px;
+  width: 200px;
+  display: block;
+  padding: 8px;
+  margin: 0 auto 8px auto;
   background-color: #ef233c;
   color: #FFF;
   text-transform: uppercase;
@@ -995,28 +987,15 @@ textarea.input {
 }
 
 .product .add-to-cart .add-to-cart-btn>i {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 40px;
-  height: 40px;
-  line-height: 38px;
-  color: #D10024;
-  opacity: 0;
-  visibility: hidden;
+  display: none;
 }
 
 .product .add-to-cart .add-to-cart-btn:hover {
   background-color: #FFF;
   color: #D10024;
   border-color: #D10024;
-  padding: 0px 30px 0px 50px;
 }
 
-.product .add-to-cart .add-to-cart-btn:hover>i {
-  opacity: 1;
-  visibility: visible;
-}
 
 /*----------------------------*\
 	Widget product
@@ -2075,6 +2054,67 @@ textarea.input {
   margin: 15px 0px;
 }
 
+.cantidadUnidades {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.suma {
+  width: 60px;
+  height: 40px;
+  background-image: url(../img/signo-menos.svg);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: center;
+
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+  background-color: #FFF;
+}
+
+.suma:active {
+  background-size: 40%;
+}
+
+.suma:hover {
+  cursor: pointer;
+}
+
+.numeroUnidades {
+  width: 80px;
+  height: 40px;
+  background: #fff;
+  border: none;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.numeroUnidades:focus {
+  outline: none;
+}
+
+.resta {
+  width: 60px;
+  height: 40px;
+  background-image: url(../img/signo-mas.svg);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: center;
+
+  border-bottom-right-radius: 40px;
+  border-top-right-radius: 40px;
+  background-color: #FFF;
+}
+
+.resta:hover {
+  cursor: pointer;
+}
+
+.resta:active {
+  background-size: 40%;
+}
+
 /*=========================================================
 	13 -> RESPONSIVE
 ===========================================================*/
@@ -2133,5 +2173,5 @@ textarea.input {
   }
 }
 .textologo{
-color: white;
-}
+  color: white;
+  height: 80px;}
