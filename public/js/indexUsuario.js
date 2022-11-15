@@ -159,7 +159,7 @@ function validateEmail(){
             datos.append('codigo', document.getElementById('id').value)
             datos.append('identificacion', document.getElementById('identificacion').value)
             datos.append('nombreUsuario', document.getElementById('nombre').value)
-            datos.append('fechaNacimiento', fecha)
+            datos.append('fechaNacimiento', document.getElementById('fechaNacimiento').value)
             datos.append('estadoUsuario', document.getElementById('estado').value)
             datos.append('contrasenia', document.getElementById('contreseña').value)
             datos.append('correo', document.getElementById('correo').value)

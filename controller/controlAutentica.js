@@ -37,6 +37,7 @@ controlador.validarUsuario=(req,res)=>{
                         const newtoken= jwt.sign({user},process.env.AUT_SECRET,{expiresIn: process.env.AUT_EXP})
                         req.session.usuario= user;
                         return res.json({autorizado: true,
+                                        data: user,
                                         message:"usuario Autorizado",
                                         token: newtoken})
                       

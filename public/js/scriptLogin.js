@@ -15,9 +15,14 @@ function validarUsuario(){
             })
             .then(data =>{
               if(data.autorizado) {
+               
+                
                 alert('AURTORIZADO')
                 localStorage.setItem('token',data.token);
-                window.location.href = '/InicioAdmin' 
+               
+                console.log(data)
+                if(data.data.tipoUsuario == "Administrador")  window.location.href = '/InicioAdmin' 
+                else  window.location.href = '/Home' 
               } else {
                 alert('NO AUTORIZADO')
               }

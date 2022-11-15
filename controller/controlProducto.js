@@ -70,8 +70,10 @@ controlador.actualizarProducto=(req,res)=>{
     const{ codigo, nombre, referencia, descripcion,  tipoProducto, estadoProducto, precioCom, precioVen, stock, categoria, empresa}=req.body
 
     let imagen = req.fileNewName;
+    console.log(imagen)
+    
 
-    let sql =`update producto set nombreProducto='${nombre}',referencia=${referencia},descripcion='${descripcion}', imgProducto='${imagen}' tipoProducto='${tipoProducto}',estadoProducto='${estadoProducto}', precioCompra=${precioCom}, precioVenta=${precioVen}, stock=${stock}, FK_idCategoria='${categoria}', FK_idEmpresa='${empresa}' 
+    let sql =`update producto set nombreProducto='${nombre}',referencia=${referencia},descripcion='${descripcion}', imgProducto='${imagen}', tipoProducto='${tipoProducto}',estadoProducto='${estadoProducto}', precioCompra=${precioCom}, precioVenta=${precioVen}, stock=${stock}, FK_idCategoria='${categoria}', FK_idEmpresa='${empresa}' 
     where  PK_codigoProducto= ${codigo}`;
 
     console.log(sql)

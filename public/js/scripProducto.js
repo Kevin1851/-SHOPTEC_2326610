@@ -16,6 +16,19 @@
     function Abrir_Modal(){
     MyModal.show();
     ocultarBtnActualizar ()
+    if(validar_Campos()) {
+      document.getElementById('nombre').value="";
+      document.getElementById('referencia').value="";
+      document.getElementById('descripcion').value="";
+      document.getElementById('tipoProducto').value="";
+      document.getElementById('estadoProducto').value="";
+      document.getElementById('precioCom').value="";
+      document.getElementById('precioVen').value="";
+      document.getElementById('stock').value="";
+      document.getElementById('categoria').value="";
+      document.getElementById('empresa').value="";
+      };
+
     }
 
     function identificar_pedido(){
@@ -98,13 +111,13 @@
 
 function Actualizar_Producto(){
   if(!validar_Campos()) return alert('COMPLETA CAMPOS');
-    let datos = new URLSearchParams()
+    let datos = new FormData()
     datos.append('codigo', document.getElementById('id').value)
     datos.append('nombre', document.getElementById('nombre').value)
     datos.append('referencia', document.getElementById('referencia').value)
     datos.append('descripcion', document.getElementById('descripcion').value)
     let fileImg = document.getElementById('img')
-     datos.append('imgen', ( fileImg.files[0]).value) 
+    datos.append('imgen', fileImg.files[0]) 
     datos.append('tipoProducto', document.getElementById('tipoProducto').value)
     datos.append('estadoProducto', document.getElementById('estadoProducto').value)
     datos.append('precioCom', document.getElementById('precioCom').value)
@@ -112,7 +125,7 @@ function Actualizar_Producto(){
     datos.append('stock', document.getElementById('stock').value)
     datos.append('categoria', document.getElementById('categoria').value)
     datos.append('empresa', document.getElementById('empresa').value)
-    console.log(datos)
+    console.log(fileImg.files[0])
   
     fetch('/actualizarProducto',
       {
@@ -149,8 +162,8 @@ function Actualizar_Producto(){
               document.getElementById('nombre').value=data[0].nombreProducto; 
               document.getElementById('referencia').value=data[0].referencia;
               document.getElementById('descripcion').value=data[0].descripcion;
-              let fileImg = document.getElementById('img')
-              fileImg.value=data[0].imgProducto; 
+            /*   let fileImg = document.getElementById('img')
+              fileImg.imgProducto; */
               document.getElementById('tipoProducto').value=data[0].tipoProducto; 
               document.getElementById('estadoProducto').value=data[0].estadoProducto;
               document.getElementById('precioCom').value=data[0].precioCompra;  
@@ -182,7 +195,7 @@ function Actualizar_Producto(){
         datos.append('stock', document.getElementById('stock').value)
         datos.append('categoria', document.getElementById('categoria').value)
         datos.append('empresa', document.getElementById('empresa').value)
-        console.log(fileImg)
+        console.log(fileImg.files[0])
         
 
 
