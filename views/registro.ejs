@@ -1,131 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/header2')  %>
-    
+<%- include('./partials/header2') %>
 
 
-	<body>
+
+  <body>
     <div class="limiter">
       <div class="container-login100">
         <div class="wrap-login100">
           <div class="login100-pic js-tilt" data-tilt>
             <img src="/images/img-01.png" alt="IMG">
           </div>
-  
-          <div class="login100-form validate-form" >
+
+          <div class="login100-form validate-form">
             <span class="login100-form-title">
               FORMULARIO DE REGISTRO
             </span>
             <!-- Nombre -->
-            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+            <form action="submit" id="formulario">
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
               <input class="input100" type="text" id="nombre" name="email" placeholder="Nombre completo">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
               </span>
             </div>
-          <!--Correo -->
-            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" id="correo" name="email" placeholder="Correo electronico">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-              </div>
-              <!-- Documento -->
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" id="identificacion" name="email" placeholder="Número de documento">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-              </div>
-              <!-- Telefono -->
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" id="telefono" name="email" placeholder="Número de Telefono">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-              </div>
-              <!-- Fecha nacimiento -->
-              <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                <input class="input100" type="date" id="fechanacimiento" name="email" >
-               
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-              </div>
+            <!--Correo -->
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" id="correo" name="email" placeholder="Correo electronico">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+            <!-- Documento -->
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" id="identificacion" name="email" placeholder="Número de documento">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+            <!-- Telefono -->
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" id="telefono" name="email" placeholder="Número de Telefono">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+            <!-- Fecha nacimiento -->
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+              <input class="input100" type="date" id="fechanacimiento" name="email">
 
-            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Password is required">
               <input class="input100" type="password" id="contrasenia" name="pass" placeholder="Contraseña">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </span>
             </div>
-            
+          </form>
             <div class="container-login100-form-btn">
               <button type="submit" class="btn btn-primary" onclick="registrarUsuario();" class="login100-form-btn">
-             <p>  Registrate </p> 
-             
+                Registrate
               </button>
             </div>
-  
-           
+
+
 
             <div class="text-center p-t-136">
               <a class="txt2" href="/">
-              <p> Inicia Sesíon </p>
+                Inicia Sesíon
                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 
-                
+
               </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    
-  
-    
-  <!--===============================================================================================-->	
+
+
+
+
+    <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-  <!--===============================================================================================-->
+    <!--===============================================================================================-->
     <script src="vendor/bootstrap/js/popper.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <!--===============================================================================================-->
+    <!--===============================================================================================-->
     <script src="vendor/select2/select2.min.js"></script>
-  <!--===============================================================================================-->
+    <!--===============================================================================================-->
     <script src="vendor/tilt/tilt.jquery.min.js"></script>
-    <script >
+    <script>
       $('.js-tilt').tilt({
         scale: 1.1
       })
     </script>
-  <!--===============================================================================================-->
+    <!--===============================================================================================-->
     <script src="js/main.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
-    </body>
+  </body>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.7/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.7/dist/sweetalert2.all.min.js"></script>
 
-    <script>
-          
-         
-     function registrarUsuario(info){
-      Swal.fire({
-  icon: 'success',
-  title: 'Usuario registrado con exito, por favor inicia sesion',
-  showConfirmButton: false,
-  timer: 2000
-})
-    
+  <script>
+
+
+    function registrarUsuario(info) {
 
       let var_nombre = document.getElementById('nombre')
       let var_correo = document.getElementById('correo')
@@ -134,29 +127,31 @@
       let var_fecha = document.getElementById('fechanacimiento')
       let var_telefono = document.getElementById('telefono')
 
-
-
       var datos = new URLSearchParams();
       datos.append('nombre', var_nombre.value);
       datos.append('correo', var_correo.value);
       datos.append('identificacion', var_identificacion.value);
       datos.append('password', var_contrasenia.value);
-      datos.append('password', var_fecha.value);
-      datos.append('password', var_telefono.value);
+      datos.append('fechaNacimiento', var_fecha.value);
+      datos.append('telefono', var_telefono.value);
 
-
-
-      fetch("/registro",{
-        method:'post',
-        body : datos,
-        headers : {'Authorization': 'Bearer' }
-      }).then(res=>res.json())
-      .then(data=>{
+      fetch("/registro", {
+        method: 'post',
+        body: datos,
+        headers: { 'Authorization': 'Bearer' }
+      }).then(res => res.json())
+      .then(data => {
+        let icon = 'success';
+        if(data.status == 400) icon = 'error';
+        Swal.fire({
+          icon: icon,
+          title: data.msg,
+          showConfirmButton: false,
+          timer: 2000
+        })
       })
 
-      
-     }
-     
-      </script>
-      
-      
+      formulario.reset()
+    }
+
+  </script>
