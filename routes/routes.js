@@ -10,8 +10,6 @@ router.post('/registro',controladorUsuario.RegistrarCliente)
 router.get('/Home',controladorHome.abrirHome)      
 router.get('/store', controladorHome.abrirstore)  
 router.get('/telefono', controladorHome.abrirtelefono)    
-router.get('/camara', controladorHome.abrircamara)  
-
-
+router.get('/camara', controladorHome.abrircamara)
 
 module.exports = router;
