@@ -15,7 +15,7 @@ function validarUsuario(){
             })
             .then(data =>{
               if(data.autorizado) {
-                alert('AURTORIZADO')
+                
                 localStorage.setItem('token',data.token);
                 window.location.href = '/index' 
               } else {

@@ -22,59 +22,56 @@
 </body>
 </html>
 <script>
+	let productos = [];
+	function renderProductos(data) {
+		let cards = `<div class='row'>`;
+		data.forEach(element => {
+				cards+=`<div class='col-md-4 col-xs-6'>`;
+					cards+=`<div class="product" >
+								<div class="product-img">
+									<img src="/img/${element.imgProducto}" class="product-img" alt="...">
+								</div>
+								<div class="product-body">
+									<p class="product-name">${element.nombreProducto}</p>
+									<p class="product-price">${element.descripcion}</p>
+									<p class="product-price">${element.stock}</p>
+								</div>
+								
+
+								<div class="add-to-cart">
+									<a href='javascript:registrarCarrito(${element.PK_codigoProducto})' class='add-to-cart-btn' > Carrito </a>
+									<input type="number" class="form-control" id="productoCantidad-${element.PK_codigoProducto}" >
+								</div>
+								
+							</div>`
+			cards+=`</div>`;
+		});
+		cards+=`</div>`;
+		document.getElementById('listaProducto').innerHTML=cards;
+	}
+	let buscador = document.getElementById('buscador');
+	buscador.addEventListener('keyup', e => {
+		const product = this.productos.filter(prod => {
+			return prod.nombreProducto.toLowerCase().includes(buscador.value.toLowerCase());
+		})
+		if(product.length > 0) {
+			renderProductos(product);
+		} else renderProductos(productos);
+	})
  listaTodosLosProductos();
  cantidadDeLaCompra();
 
 
 function listaTodosLosProductos () {
-fetch('/listarTodosLosProductos',{
-	method:'GET'
-})
-.then(resp => resp.json())
-.then(data=>{
-
-let cards = `<div class='row'>`;
-data.forEach(element => {
-		cards+=`<div class='col-md-4 col-xs-6'>`;
-			cards+=`<div class="product" >
-				  		<div class="product-img">
-							<img src="/img/${element.img}" class="product-img" alt="...">
-				 	 	</div>
-						<div class="product-body">
-							<p class="product-name">${element.nombreProducto}</p>
-							<p class="product-price">${element.descripcion}</p>
-							<p class="product-price">${element.stock}</p>
-						</div>
-						
-
-						<div class="add-to-cart">
-							<a href='javascript:registrarCarrito(${element.PK_codigoProducto})' class='add-to-cart-btn' > Carrito </a>
-							<input type="number" class="form-control" id="productoCantidad-${element.PK_codigoProducto}" >
-						</div>
-						
-					</div>`
-	cards+=`</div>`;
-});
-cards+=`</div>`;
-document.getElementById('listaProducto').innerHTML=cards;
-});
+	fetch('/listarTodosLosProductos',{
+		method:'GET'
+	})
+	.then(resp => resp.json())
+	.then(data=>{
+		this.productos = data;
+		renderProductos(data);
+	});
 };
-
-function registrarLaCompra(idProducto){
-let datos = new URLSearchParams();
-  datos.append('idProducto', idProducto)
-  
- fetch('/registroDeCompras', {
-	method :'POST',
-	body:datos
- })
- .then(resp => resp.text())
- .then(data =>{
-	
-//   cantidadComprada();
-alert(data);
- });
-}
 
 function registrarCarrito(idProducto){
 let datos = new URLSearchParams();
@@ -89,20 +86,8 @@ let datos = new URLSearchParams();
 	cantidadDeLaCompra();
 	listaTodosLosProductos();
 	listaTodosProductosCarrito();
-	alert(data + " " + datos);
 	console.log(data +" "+ datos)
  });
-}
-
-function cantidadDeLaCompra(){
-
-fetch('/cantidadComprada', {
-method :'get',
-})
-.then(resp => resp.json())
-.then(data =>{
-document.getElementById('cantidadPdto').innerHTML=data[0].cantidadPdto;
-});
 }
 </script>
 

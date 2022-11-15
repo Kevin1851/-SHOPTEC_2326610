@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2022 a las 03:19:22
+-- Tiempo de generación: 08-11-2022 a las 14:27:36
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `shoptecyuko`
+-- Base de datos: `shoptec`
 --
 
 -- --------------------------------------------------------
@@ -30,9 +30,12 @@ SET time_zone = "+00:00";
 CREATE TABLE `carrito` (
   `PKIdCarrito` int(10) NOT NULL,
   `cantidadPdto` int(10) NOT NULL,
-  `idUsuarioC` int(10) NOT NULL,
-  `idProductoC` int(10) NOT NULL
+  `FkIdPdto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
 
 -- --------------------------------------------------------
 
@@ -102,6 +105,28 @@ INSERT INTO `empresa` (`PK_nitEmpresa`, `nombre`, `ubicacion`, `FK_propietario`)
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE `imagen` (
+  `PK_idImagen` int(11) NOT NULL,
+  `nombreImagen` varchar(50) NOT NULL,
+  `FK_idProducto` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`PK_idImagen`, `nombreImagen`, `FK_idProducto`) VALUES
+(3, '1666057508904product07.png', 8),
+(4, '1666056902793product02.png', 9),
+(5, '1666057508904product07.png', 10),
+(6, '1666054667584product01.png', 11);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `producto`
 --
 
@@ -110,13 +135,12 @@ CREATE TABLE `producto` (
   `nombreProducto` varchar(50) NOT NULL,
   `referencia` varchar(30) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
-  `imgProducto` varchar(50) NOT NULL,
   `tipoProducto` enum('Nuevo','Usado') NOT NULL,
   `estadoProducto` enum('revision','cancelado','ok') DEFAULT NULL,
   `precioCompra` decimal(10,2) DEFAULT NULL,
   `precioVenta` decimal(10,3) NOT NULL,
   `stock` int(10) NOT NULL,
-  `FK_idCategoria` int(10) NOT NULL,
+  `FK_idCategoria` int(30) NOT NULL,
   `FK_idEmpresa` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -124,11 +148,11 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`PK_codigoProducto`, `nombreProducto`, `referencia`, `descripcion`, `imgProducto`, `tipoProducto`, `estadoProducto`, `precioCompra`, `precioVenta`, `stock`, `FK_idCategoria`, `FK_idEmpresa`) VALUES
-(8, 'tecno camon 17', '1111', 'Delicado y un poco pequeño', '', 'Nuevo', 'cancelado', '1232.00', '0.000', 32, 2, 202020),
-(9, 'ewew', '-1', 'wedsfer', '', 'Nuevo', 'revision', '2332.00', '23.000', 12233, 2, 202020),
-(10, 'remid', '2032932', 'Delicado y un poco pequeño', '', 'Nuevo', 'cancelado', '2323223.00', '9999999.999', 3, 2, 202020),
-(11, 'ensayo', '121212', 'ensayando ', '', 'Nuevo', 'ok', '10000.00', '20000.000', 3, 4, 121212);
+INSERT INTO `producto` (`PK_codigoProducto`, `nombreProducto`, `referencia`, `descripcion`, `tipoProducto`, `estadoProducto`, `precioCompra`, `precioVenta`, `stock`, `FK_idCategoria`, `FK_idEmpresa`) VALUES
+(8, 'tecno camon 17', '1111', 'Delicado y un poco pequeño', 'Nuevo', 'cancelado', '1232.00', '0.000', 10, 2, 202020),
+(9, 'ewew', '-1', 'wedsfer', 'Nuevo', 'revision', '2332.00', '23.000', 10, 2, 202020),
+(10, 'remid', '2032932', 'Delicado y un poco pequeño', 'Nuevo', 'cancelado', '2323223.00', '9999999.999', 10, 2, 202020),
+(11, 'ensayo', '121212', 'ensayando ', 'Nuevo', 'ok', '10000.00', '20000.000', 10, 4, 121212);
 
 -- --------------------------------------------------------
 
@@ -145,7 +169,7 @@ CREATE TABLE `usuario` (
   `contrasenia` varchar(50) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `telefono` varchar(13) DEFAULT NULL,
-  `TipoUsuario` enum('Administrador','Propietario','Cliente') NOT NULL
+  `TipoUsuario` enum('Administrador','Asesor','Cliente') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -153,15 +177,13 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`PK_id_usuario`, `identificacion`, `nombreUsuario`, `fechaNacimiento`, `estadoUsuario`, `contrasenia`, `correo`, `telefono`, `TipoUsuario`) VALUES
-(11, 1078746186, 'Juan Fernando Yuco Rojas', '2022-10-12', 'activo', '123456', 'juanrojitass0418@gmail.com', '3126796273', ''),
+(11, 1078746186, 'Juan Fernando Yuco Rojas', '2022-10-12', 'activo', '123456', 'juan@gmail.com', '3126796273', 'Asesor'),
 (12, 1076903377, 'Juan Felipe Moreno Ramirez', '2003-04-07', 'activo', '123456', 'hsdgbgushj@cj', '3134165315', ''),
 (13, 9999999, 'Juan Yuco ', '2022-09-16', 'activo', '3243', '4re@@jkgf', '43545', ''),
-(14, 12323, 'juan', '2022-09-15', 'activo', '132243', '@skdcjks,m', '31223', ''),
+(14, 12323, 'juan', '2022-09-15', 'activo', '132243', '@skdcjks,m', '31223', 'Asesor'),
 (15, 1078746185, '', '0000-00-00', '', '', '', '', ''),
 (16, 1223323, 'rerrer', '2022-10-10', 'activo', '12345', 'juanrojitass0418@j.com', '1232343434', 'Administrador'),
-(17, 1078746188, 'carlos', '0000-00-00', 'activo', '123456', 'juanrojitass0418@j.com', '3126796273', ''),
-(18, 0, '', '0000-00-00', NULL, ',,', '', 'undefined', 'Administrador'),
-(20, 123433434, '1222323323', '0000-00-00', NULL, '12345', 'lola', 'undefined', 'Administrador');
+(17, 1078746188, 'carlos', '0000-00-00', 'activo', '123456', 'juanrojitass0418@j.com', '3126796273', 'Asesor');
 
 -- --------------------------------------------------------
 
@@ -172,7 +194,6 @@ INSERT INTO `usuario` (`PK_id_usuario`, `identificacion`, `nombreUsuario`, `fech
 CREATE TABLE `venta` (
   `PK_idCompra` int(10) NOT NULL,
   `fechaCompra` date NOT NULL,
-  `estadoVenta` enum('Cancelado','Aprobado','Pendiente','') NOT NULL,
   `FK_idUsuario` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -180,9 +201,7 @@ CREATE TABLE `venta` (
 -- Volcado de datos para la tabla `venta`
 --
 
-INSERT INTO `venta` (`PK_idCompra`, `fechaCompra`, `estadoVenta`, `FK_idUsuario`) VALUES
-(1, '2022-10-10', 'Pendiente', 14),
-(2, '2022-10-31', 'Pendiente', 13);
+
 
 --
 -- Índices para tablas volcadas
@@ -192,7 +211,8 @@ INSERT INTO `venta` (`PK_idCompra`, `fechaCompra`, `estadoVenta`, `FK_idUsuario`
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`PKIdCarrito`);
+  ADD PRIMARY KEY (`PKIdCarrito`),
+  ADD KEY `carritoPdto` (`FkIdPdto`);
 
 --
 -- Indices de la tabla `categoria`
@@ -216,6 +236,13 @@ ALTER TABLE `empresa`
   ADD PRIMARY KEY (`PK_nitEmpresa`),
   ADD UNIQUE KEY `PK_nitEmpresa` (`PK_nitEmpresa`),
   ADD KEY `empr_usu_L` (`FK_propietario`);
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`PK_idImagen`),
+  ADD KEY `img_Usu` (`FK_idProducto`);
 
 --
 -- Indices de la tabla `producto`
@@ -244,8 +271,12 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
 ALTER TABLE `carrito`
-  MODIFY `PKIdCarrito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT
+  MODIFY `PKIdCarrito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
@@ -259,6 +290,12 @@ ALTER TABLE `detalleventa`
   MODIFY `PK_idDetalleCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `PK_idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
@@ -268,30 +305,43 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `PK_id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `PK_id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `PK_idCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PK_idCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD CONSTRAINT `carritoPdto` FOREIGN KEY (`FkIdPdto`) REFERENCES `producto` (`PK_codigoProducto`);
+
+--
 -- Filtros para la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  ADD CONSTRAINT `produ_Detalle` FOREIGN KEY (`FK_idProducto`) REFERENCES `producto` (`PK_codigoProducto`),
-  ADD CONSTRAINT `venta_Detalle` FOREIGN KEY (`FK_idCompra`) REFERENCES `venta` (`PK_idCompra`);
+  ADD CONSTRAINT `venta_Detalle` FOREIGN KEY (`FK_idCompra`) REFERENCES `venta` (`PK_idCompra`),
+  ADD CONSTRAINT `produ_Detalle` FOREIGN KEY (`FK_idProducto`) REFERENCES `producto` (`PK_codigoProducto`);
+  
 
 --
 -- Filtros para la tabla `empresa`
 --
 ALTER TABLE `empresa`
   ADD CONSTRAINT `empresa_ibfk_1` FOREIGN KEY (`FK_propietario`) REFERENCES `usuario` (`PK_id_usuario`);
+
+--
+-- Filtros para la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`FK_idProducto`) REFERENCES `producto` (`PK_codigoProducto`);
 
 --
 -- Filtros para la tabla `producto`
